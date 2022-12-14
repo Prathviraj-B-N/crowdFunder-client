@@ -5,12 +5,13 @@ import CustomButton from "./CustomButton";
 import { logo, menu, search, thirdweb } from "../assets";
 
 import { navlinks } from "../constants";
+import { useStateContext } from "../context";
 
 const NavBar = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState("dashboard");
   const [toggleDrawer, setToggleDrawer] = useState(false);
-  const address = "0x1234";
+  const { connect,address } = useStateContext();
 
   return (
     <div className="md:flex-row flex flex-col-reverse md:justify-between mb-[35px] gap-6 justify-center items-center">
@@ -36,8 +37,7 @@ const NavBar = () => {
           handleClick={() => {
             if (address) navigate("create-campaign");
             else {
-              console.log("connect wallet!");
-              ("connect()");
+              connect();
             }
           }}
         />
@@ -119,8 +119,7 @@ const NavBar = () => {
                   handleClick={() => {
                     if (address) navigate("create-campaign");
                     else {
-                      console.log("connect wallet!");
-                      ("connect()");
+                      connect();
                     }
                   }}
                 />
