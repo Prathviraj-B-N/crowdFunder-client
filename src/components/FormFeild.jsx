@@ -9,7 +9,7 @@ const FormFeild = ({
   isTextArea,
 }) => {
   return (
-    <lable className="flex-1 w-full flex flex-col">
+    <label className="flex-1 w-full flex flex-col">
       {lableName && (
         <span className="font-epilogue font-medium tetx-[14px] leading-[22px] text-[#808191] mb-[10px]">
           {lableName}
@@ -34,7 +34,7 @@ const FormFeild = ({
           className="py-[15px] sm:px-[25px] px-[15px] outline-none border-[1px] bg-transparent font-epilogue text-white text-[14px] placeholder:text-[#4b5264] rounded-lg sm:min-w-[300px]"
         />
       )}
-    </lable>
+    </label>
   );
 };
 
