@@ -3,13 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { loader } from "../assets";
 import FundCard from "./FundCard";
 
-
-const handleNavigate = (campaign) => {
-    navigate(`/campaign-datails/${campaign.title}`,{state:campaign})
-}
-
 const DisplayCampaigns = ({ title, isloading, campaigns }) => {
   const navigate = useNavigate();
+
+  const handleNavigate = (campaign) => {
+    navigate(`/campaign-details/${campaign.title}`, { state: campaign });
+  };
   return (
     <div>
       <h1 className="font-epilogue font-semibold text-[18px] text-white text-left">
@@ -24,9 +23,21 @@ const DisplayCampaigns = ({ title, isloading, campaigns }) => {
             className="w-[100px] h-[100px] object-contain"
           />
         )}
-        
-        {!isloading && campaigns.length === 0 && (<p className="font-epilogue font-semibold text-[14px] leading[30px] text-[#818183]">No Campaigns</p>)}
-        {!isloading && campaigns.length > 0 && (campaigns.map((camp)=> <FundCard key={camp.id} {...camp} handleClick={() => handleNavigate(camp)}/>))}
+
+        {!isloading && campaigns.length === 0 && (
+          <p className="font-epilogue font-semibold text-[14px] leading[30px] text-[#818183]">
+            No Campaigns
+          </p>
+        )}
+        {!isloading &&
+          campaigns.length > 0 &&
+          campaigns.map((camp) => (
+            <FundCard
+              key={camp.id}
+              {...camp}
+              handleClick={() => handleNavigate(camp)}
+            />
+          ))}
       </div>
     </div>
   );
